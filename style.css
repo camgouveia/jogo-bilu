@@ -1,0 +1,77 @@
+/* Estilo Geral */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 30px;
+    color: #333;
+
+   background-image: url("gatos.padrao.avif"); /* imagem local */
+    background-repeat: repeat;          /* repete a imagem */
+    background-size: auto;              /* mantém o tamanho original */
+    background-attachment: fixed;       /* opcional: fixa o fundo ao rolar */
+}
+
+/* Caixa principal do jogo */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h1 {
+    color: #d63384;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Input de texto */
+input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #d63384;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Botão */
+button {
+    background-color: #d63384;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #a62467;
+}
+
+/* Resultado do jogo */
+#resultado {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Ranking */
+#ranking {
+    list-style: none;
+    padding: 0;
+}
+
+#ranking li {
+    background: #ffe3ec;
+    margin: 5px auto;
+    padding:

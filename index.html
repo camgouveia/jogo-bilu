@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Com texto Bilu's</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Com Texto Bilu's</h1>
+        <p>Com Texto Bilu's é um jogo original incrível e amado em mais 47 galáxias e 5,15 nebulosas. E não, não tem nada a ver com contexto</p>
+
+<p>Tente adivinhar a senha secreta para ganhar seu presente".</p>
+        
+        <input type="text" id="input-palavra" placeholder="Digite uma palavra...">
+        <button onclick="verificarPalavra()">Tentar</button>
+        
+        <p id="resultado"></p>
+
+        <h2>Palavras mais próximas:</h2>
+        <ul id="ranking"></ul>
+    </div>
+
+    <script>
+        const palavraSecreta = "noivado";
+        let ranking = [];
+
+        function calcularSimilaridade(palavra) {
+            let score = 0;
+            
+            for (let i = 0; i < palavra.length; i++) {
+                if (palavra[i] === palavraSecreta[i]) {
+                    score += 50;
+                } else if (palavraSecreta.includes(palavra[i])) {
+                    score += 25;
+                }
+            }
+            
+            return Math.min(score, 1000);  
+        }
+
+        function verificarPalavra() {
+            let input = document.getElementById("input-palavra").value.toLowerCase().trim();
+            let resultado = document.getElementById("resultado");
+            let rankingList = document.getElementById("ranking");
+
+            if (input === palavraSecreta) {
+                resultado.innerHTML = "🎉 Parabéns! Você descobriu a senha. Diga ela ao seu Bilu";
+                return;
+            }
+
+            let similaridade = calcularSimilaridade(input);
+            ranking.push({ palavra: input, score: similaridade });
+
+            ranking.sort((a, b) => b.score - a.score);
+
+            resultado.innerHTML = `Similaridade: ${similaridade}`;
+            
+            rankingList.innerHTML = "";
+            ranking.slice(0, 5).forEach(item => {
+                let li = document.createElement("li");
+                li.textContent = `${item.palavra} - Similaridade: ${item.score}`;
+                rankingList.appendChild(li);
+            });
+        }
+
+function verificarPalavra() {
+    let input = document.getElementById("input-palavra").value.toLowerCase().trim();
+    let resultado = document.getElementById("resultado");
+    let rankingList = document.getElementById("ranking");
+
+    // 👇 Aqui entra sua condição especial para "gato"
+    if (input === "gato") {
+        resultado.innerHTML = "😼 Não é tão fácil assim, Bilu.";
+        return;
+    }
+
+    if (input === palavraSecreta) {
+        resultado.innerHTML = "🎉 Parabéns! Você acertou a palavra secreta!";
+        return;
+    }
+
+    let similaridade = calcularSimilaridade(input);
+    ranking.push({ palavra: input, score: similaridade });
+
+    ranking.sort((a, b) => b.score - a.score);
+
+    resultado.innerHTML = `Similaridade: ${similaridade}`;
+    
+    rankingList.innerHTML = "";
+    ranking.slice(0, 5).forEach(item => {
+        let li = document.createElement("li");
+        li.textContent = `${item.palavra} - Similaridade: ${item.score}`;
+        rankingList.appendChild(li);
+    });
+}
+    </script>
+</body>
+</html>
